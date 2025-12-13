@@ -1,25 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Peller & Javis Mini App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Monetag SDK -->
-  <script src="//libtl.com/sdk.js"
-          data-zone="10317085"
-          data-sdk="show_10317085"></script>
+  <script src="//libtl.com/sdk.js" data-zone="10317085" data-sdk="show_10317085"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #0b1220;
+      color: #fff;
+    }
+
+    header {
+      background: #111827;
+      padding: 16px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    #video-feed {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,.4);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .card .title {
+      padding: 10px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .watch {
+      background: #ef4444;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      flex: 1;
+      text-align: center;
+      margin-right: 5px;
+    }
+
+    .share {
+      background: #f59e0b;
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      flex: 1;
+      text-align: center;
+      margin-left: 5px;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>🎬 Peller & Javis</h2>
+<header>🤖 Peller & Javis</header>
 
-<div class="video-box">
-  <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
-  <button onclick="playVideo()">▶ Play Video</button>
-</div>
+<div id="video-feed"></div>
 
-<script src="app.js"></script>
+<script>
+  // Sample video list - replace with your full Cheleee videos
+  const videos = [
+    { title: "Video 1", embed: "https://otieu.com/4/7533041", thumbnail: "thumb1.jpg" },
+    { title: "Video 2", embed: "https://otieu.com/4/7533041", thumbnail: "thumb2.jpg" },
+    { title: "Video 3", embed: "https://otieu.com/4/7533041", thumbnail: "thumb3.jpg" },
+    { title: "Video 4", embed: "https://otieu.com/4/7533041", thumbnail: "thumb4.jpg" }
+  ];
+
+  const feed = document.getElementById("video-feed");
+
+  videos.forEach(video => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${video.thumbnail}" alt="${video.title}">
+      <div class="title">${video.title}</div>
+      <div class="buttons">
+        <a class="watch" href="javascript:void(0)">WATCH</a>
+        <a class="share" href="javascript:void(0)">SHARE</a>
+      </div>
+    `;
+    feed.appendChild(card);
+
+    // Monetag pre-roll for WATCH button
+    const watchBtn = card.querySelector(".watch");
+    watchBtn.addEventListener("click", () => {
+      show_10317085({
+        type: 'inApp',
+        inAppSettings: {
+          frequency: 1,
+          capping: 0.1,
+          interval: 30,
+          timeout: 2,
+          everyPage: false
+        }
+      });
+      setTimeout(() => {
+        window.open(video.embed, "_blank");
+      }, 3000);
+    });
+
+    // Share button
+    const shareBtn = card.querySelector(".share");
+    shareBtn.addEventListener("click", () => {
+      const shareText = `Check out this video: ${video.title} - ${video.embed}`;
+      if (navigator.share) {
+        navigator.share({ title: "Peller & Javis Video", text: shareText });
+      } else {
+        prompt("Copy this link to share:", video.embed);
+      }
+    });
+  });
+</script>
+
 </body>
   </html>
