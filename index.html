@@ -1,41 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>AI 🤖 Tasks</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<header>🤖 Peller & Javis Mini App</header>
 
-  <!-- Monetag SDK -->
-  <script src="//libtl.com/sdk.js"
-          data-zone="10317085"
-          data-sdk="show_10317085"></script>
+<div class="container">
 
-  <link rel="stylesheet" href="style.css">
-</head>
+  <!-- BALANCE -->
+  <div class="balance-card">
+    <h3>Balance: NG0.00</h3>
+    <p>Complete 50 Tasks to earn NG5,000</p>
+  </div>
 
-<body>
+  <!-- TASK PROGRESSION -->
+  <div class="task-progression">
+    <h4>Task Progression: <span id="task-count">0</span> / 50</h4>
+    <div id="tasks-container">
+      <!-- Each task button (rewarded ad) will be appended here by JS -->
+    </div>
+  </div>
 
-<h2>🎯 TASK PROGRESSION</h2>
-<div class="progress">
-  <div class="bar" id="bar"></div>
+  <!-- TOP FANS -->
+  <div class="top-fans">
+    <h4>Top Fans Leaderboard</h4>
+    <ol id="top-fans-list">
+      <!-- Top fans will be displayed here -->
+    </ol>
+  </div>
+
+  <!-- WITHDRAW -->
+  <div class="withdraw-section">
+    <h4>Withdraw</h4>
+    <input type="text" id="account-number" placeholder="Enter Account Number" />
+    <button id="withdraw-btn">Withdraw</button>
+    <p id="withdraw-status">Pending...</p>
+  </div>
+
 </div>
-<p id="count">0 / 5 TASKS COMPLETED</p>
-
-<div class="task">
-  <span>📺 WATCH THE AD</span>
-  <button onclick="watchAd(1)">GO</button>
-</div>
-
-<div class="task premium">
-  <span>⭐ WATCH THE AD (PREMIUM)</span>
-  <button onclick="watchAd(2)">GO</button>
-</div>
-
-<div class="task">
-  <span>🎮 DAILY BONUS AD</span>
-  <button onclick="watchAd(1)">GO</button>
-</div>
-
-<script src="script.js"></script>
-</body>
-  </html>
