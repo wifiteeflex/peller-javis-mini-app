@@ -1,47 +1,57 @@
-body {
-  font-family: Arial;
-  background: #0b132b;
-  color: white;
-  padding: 14px;
-}
-
-h2 {
-  text-align: center;
-}
-
-.progress {
-  background: #1c2541;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 12px;
-  margin-bottom: 6px;
-}
-
-.bar {
-  height: 100%;
-  width: 0%;
-  background: #5bc0be;
-}
-
-.task {
+.balance-card {
   background: #1c2541;
   padding: 12px;
   border-radius: 10px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
-.task button {
-  background: #3a86ff;
-  color: white;
-  border: none;
-  padding: 6px 14px;
+.task-progression {
+  background: #162447;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.task-btn {
+  display: block;
+  margin: 6px 0;
+  padding: 10px;
   border-radius: 8px;
+  background: #3a86ff;
+  color: #fff;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.premium {
-  border: 1px solid gold;
-    }
+.top-fans {
+  background: #1f4068;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.withdraw-section {
+  background: #3f72af;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.withdraw-section input {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.withdraw-section button {
+  padding: 10px;
+  background: #ff5d5d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  }
